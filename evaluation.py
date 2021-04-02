@@ -79,8 +79,6 @@ def create_caption_beam(model, tokenizer, feature, max_len, k):
         else :  
           all_candidate.append([get_cap,score])
     sequences = all_candidate
-    
-    
     sequences = sorted(sequences, key = lambda I: I[1])
     sequences = sequences[-k:]
 
@@ -198,11 +196,3 @@ if __name__ == '__main__':
     model = load_model(model_path)
     Bleu_Score(model, sequence,test_list, hf, tokenizer, saved_path, max_len)
     k_beam_Bleu_Score(model, sequence,test_list, hf, tokenizer,beam_saved_path, max_len, 3)
-
-  #with h5py.File(feature_path,'r') as hf:
-  #  model = load_model(model_path)
-
-    #Bleu_Score(model, seq,testList, hf, token, saved_path, max_len)
-  #  Bleu_Score(model, seq,testList, hf, token, saved_path, max_len)
-  #  k_beam_Bleu_Score(model, seq,testList, hf, token,beam_saved_path, max_len, 3)
-    #test(model, seq,testList,hf,token, max_len)
